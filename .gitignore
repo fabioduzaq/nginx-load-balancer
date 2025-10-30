@@ -1,0 +1,17 @@
+# Ignorar arquivos de log
+*.log
+
+# Ignorar diretórios temporários
+/tmp/
+
+# Ignorar arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Docker related
+**/node_modules/
+**/vendor/
+.env
+
+# Outras pastas ocultas
+.git/
