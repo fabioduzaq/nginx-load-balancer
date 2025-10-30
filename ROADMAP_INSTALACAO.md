@@ -88,3 +88,20 @@ Basta copiar estes arquivos para um VPS Docker, editar domínios e rodar o `dock
 ---
 
 Qualquer dev poderá replicar, manter e evoluir o ambiente usando este roadmap e os arquivos incluídos nesta pasta.
+
+## Boas Práticas para Garantir a Instalação em Qualquer Máquina
+
+- **Estrutura de Diretórios**: Certifique-se que os arquivos `nginx.conf` e `load-balancer.conf` estão na raiz do projeto.
+- **Logs**: O diretório `logs` deve existir para evitar erros de volume. Se não existir, crie com:
+  ```sh
+  mkdir -p logs
+  ```
+- **Caminhos de Volumes**: O arquivo `docker-compose.yml` já está configurado para usar os caminhos corretos. Não altere estes caminhos, a não ser que a estrutura dos arquivos seja modificada.
+- **Montagem de Arquivos**: Sempre monte arquivos em arquivos (ex: `nginx.conf` → `/etc/nginx/nginx.conf`) e não tente montar uma pasta sobre um arquivo no container.
+- **Comando para subir o serviço**:
+  ```sh
+  docker-compose up -d
+  ```
+- **Requisitos**: Tenha Docker e Docker Compose instalados na máquina.
+
+Assim todos os ambientes terão o deploy garantido sem problemas de montagem de volumes ou confusão de caminhos.
